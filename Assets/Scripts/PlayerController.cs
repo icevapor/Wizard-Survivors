@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     private SpriteRenderer spriteRenderer;
+    private Rigidbody2D rb;
     [SerializeField] private float speed;
     private float verticalInput;
     private float horizontalInput;
@@ -12,6 +13,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
+        rb = GetComponent<Rigidbody2D>();
     }
 
     void Update()
@@ -20,8 +22,7 @@ public class PlayerController : MonoBehaviour
         horizontalInput = Input.GetAxis("Horizontal");
         
         //Moves player based on wasd input.
-        transform.Translate(Vector3.right * speed * horizontalInput * Time.deltaTime);
-        transform.Translate(Vector3.up * speed * verticalInput * Time.deltaTime);
+        rb.velocity = new Vector2 (speed * horizontalInput, speed * verticalInput);
 
         if (Input.GetKeyDown(KeyCode.A))
         {

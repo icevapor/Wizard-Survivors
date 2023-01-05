@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4002824369658582914}
   - component: {fileID: 4635437196905335742}
   - component: {fileID: 8965766523986341870}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BubbleSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -97,7 +97,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -111,7 +111,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.32, y: 0.32}
+  m_Size: {x: 0.25, y: 0.25}
   m_EdgeRadius: 0
 --- !u!114 &4635437196905335742
 MonoBehaviour:
@@ -125,7 +125,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cbfc48397aebc04fae3971bb3594a4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectileForce: 10
+  poppedSprite: {fileID: 21300000, guid: a38975f268cb3cc488bbba8b307ccff2, type: 3}
+  projectileForce: 5
+  projectileLifespan: 5
+  projectileDamage: 5
   layerMask:
     serializedVersion: 2
     m_Bits: 64
