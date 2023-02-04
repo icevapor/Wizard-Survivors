@@ -1,0 +1,69 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Default Local Group
+  m_EditorClassIdentifier: 
+  m_GroupName: Default Local Group
+  m_Data:
+    m_SerializedData: []
+  m_GUID: 5171bd6ae95f82c47bbac77c6adae90d
+  m_SerializeEntries:
+  - m_GUID: 7878c4b63fd2e4742a765cb5f07027dd
+    m_Address: Assets/Sprites/Weapon Sprites/BreadSprite.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 357d9185eaabcc34ca576da74bbbbb26
+    m_Address: Assets/Sprites/Weapon Sprites/BubbleWandSprite.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 168c829f0864f384b928aa54a7ca209a
+    m_Address: Assets/Sprites/Weapon Sprites/ExplosionStaffSprite.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: f56cf4febb507ff49ac05c0bb6db338a
+    m_Address: Assets/Sprites/Weapon Sprites/UnstablePotionSprite.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: f0c9ee59af091c54da530bc005242138
+    m_Address: Assets/Sprites/Weapon Sprites/WindRingSprite.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: a50db05e467df924999c9c5f82fcc7a9
+    m_Address: Assets/Sprites/Passive Sprites/EyeOfNewtSprite.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: e02da794e21b5f8438a7c80f2152a4eb
+    m_Address: Assets/Sprites/Passive Sprites/FairyHeelysSprite.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: d70602c9717bdd1499be70445a7573ec
+    m_Address: Assets/Sprites/Passive Sprites/OlderWandSprite.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: c128199d439d18f4fb62198f16342f56
+    m_Address: Assets/Sprites/Passive Sprites/PhilosophersStoneSprite.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 7724d5bc77635c9429f2bbca277d22d7
+    m_Address: Assets/Sprites/Passive Sprites/WizardToolbeltSprite.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 17e8737cf4c221b47a964c6fa95a57ab
+    m_Address: Assets/Sprites/Item Icon Sprites/ItemIconSpriteSheet.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 4548f20b107533b49a922b15f9e38c5a, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 432e9d3daf3ad7145b14a98fc5c4bdb2, type: 2}
+    - {fileID: 11400000, guid: 6909a9fc82273e148a32ecb7109d9967, type: 2}

@@ -11,7 +11,6 @@ public class BubbleScript : MonoBehaviour
 
     [SerializeField] private float projectileForce;
     [SerializeField] private float projectileLifespan;
-    [SerializeField] private int projectileDamage;
 
     private Vector2 distanceToTarget;
     private Transform player;
@@ -26,17 +25,15 @@ public class BubbleScript : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         player = GameObject.Find("Wizard").GetComponent<Transform>();
 
-        //Scans a square area around the player and targets the first collider found. If no collider is found, a random vector is generated as a target direction.
+        //Scans a circular area around the player and targets the first collider found. If no collider is found, a random vector is generated as a target direction.
         try
         {
             Vector2 circleCenter = new Vector2(player.position.x, player.position.y);
 
-            float radius = 15.0f;
+            float radius = 5f;
 
             //Line that may cause exception.
             Collider2D enemyCollider = Physics2D.OverlapCircle(circleCenter, radius, layerMask);
-
-            Debug.Log(enemyCollider);
 
             distanceToTarget = new Vector2(enemyCollider.transform.position.x - transform.position.x, enemyCollider.transform.position.y - transform.position.y);
 
@@ -45,8 +42,8 @@ public class BubbleScript : MonoBehaviour
 
         catch(NullReferenceException e) 
         {
-            Debug.Log("Detect Fail");
-            Vector2 randomVector = new Vector2(player.position.x + UnityEngine.Random.Range(-15.0f, 15.0f), player.position.y + UnityEngine.Random.Range(-15.0f, 15.0f));
+
+            Vector2 randomVector = new Vector2(player.position.x + UnityEngine.Random.Range(-5f, 5f), player.position.y + UnityEngine.Random.Range(-5f, 5f));
 
             rb.AddForce(randomVector * projectileForce, ForceMode2D.Impulse);
         }
@@ -55,10 +52,7 @@ public class BubbleScript : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collider)
     {
-        if (collider.gameObject.layer == 6)
-        {
-            StartCoroutine(EnemyHit(collider.gameObject));
-        }
+        StartCoroutine(EnemyHit(collider.gameObject));
     }
 
     //On hitting an enemy change sprite to poppedSprite, stop momentum, damage enemy, and then terminate after half a second.
@@ -66,13 +60,13 @@ public class BubbleScript : MonoBehaviour
     {
         IDamageable damageable = enemy.GetComponent<IDamageable>();
 
-        damageable?.Damage(projectileDamage);
+        damageable?.Damage(WeaponStats.bubbleDamage * PlayerStats.damageMultiplier);
 
         spriteRenderer.sprite = poppedSprite;
 
         rb.velocity = new Vector2(0.0f, 0.0f);
 
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.25f);
 
         Destroy(gameObject);
     }
