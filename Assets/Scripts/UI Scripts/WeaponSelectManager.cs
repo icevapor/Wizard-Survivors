@@ -34,8 +34,8 @@ public class WeaponSelectManager : MonoBehaviour
 
         WeaponStats.breadDamage = 5.0f;
         WeaponStats.breadSpeedMultiplier = 1.0f;
-        WeaponStats.geeseSize = 1.0f;
-        WeaponStats.maxGeese = 1;
+        WeaponStats.duckSize = 1.0f;
+        WeaponStats.maxDucks = 1;
     }
 
     public void SelectBubbleWand()

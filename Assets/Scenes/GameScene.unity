@@ -340,7 +340,7 @@ MonoBehaviour:
   - {fileID: 7953558645316291417, guid: e56bf3eaaca3a354bac131d688e0d2d9, type: 3}
   - {fileID: 7588795741304381166, guid: 2b5e0e3f9cd4b9246a42a148ad1686a2, type: 3}
   bossActive: 0
-  maxEnemies: 8
+  maxEnemies: 10
   currentEnemies: 0
 --- !u!4 &266039963
 Transform:
@@ -1424,7 +1424,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c98354b054a99414a8ce9a82bf1bc3d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  goosePrefab: {fileID: 2510716594099356159, guid: c5c849e5582c1fe47bdb26350149e5dd, type: 3}
+  duckPrefab: {fileID: 2510716594099356159, guid: c5c849e5582c1fe47bdb26350149e5dd, type: 3}
 --- !u!1 &399864665
 GameObject:
   m_ObjectHideFlags: 0
@@ -5226,7 +5226,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damagedSprite: {fileID: 21300000, guid: 1feb4e29c6f02984eafd40938a99f686, type: 3}
-  defaultSpeed: 0.9
+  defaultSpeed: 0.87
 --- !u!50 &1313101137
 Rigidbody2D:
   serializedVersion: 4

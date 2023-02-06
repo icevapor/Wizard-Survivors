@@ -17,8 +17,8 @@ public class MainMenuUIManager : MonoBehaviour
         PlayerStats.experiencePoints = 0;
         PlayerStats.expToNextLevel = 10;
 
-        PlayerStats.health = 50;
-        PlayerStats.maxHealth = 50;
+        PlayerStats.health = 30;
+        PlayerStats.maxHealth = 30;
         PlayerStats.healthMultiplier = 1.0f;
         PlayerStats.healthRegen = 0.0025f;
 

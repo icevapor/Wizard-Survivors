@@ -54,7 +54,7 @@ public class BreadScript : MonoBehaviour
             rb.velocity *= 0;
         }
 
-        transform.localScale = new Vector3(WeaponStats.geeseSize, WeaponStats.geeseSize, WeaponStats.geeseSize);
+        transform.localScale = new Vector3(WeaponStats.duckSize, WeaponStats.duckSize, WeaponStats.duckSize);
     }
 
     private void TargetClosestEnemy()

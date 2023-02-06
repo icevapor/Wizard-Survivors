@@ -21,7 +21,7 @@ public class ItemLevelUp : MonoBehaviour
             case 6:
                 pInventory.itemLevels[6] += 1;
 
-                PlayerStats.healthRegen += 0.0025f;
+                PlayerStats.healthRegen += 0.005f;
 
                 break;
 
@@ -51,7 +51,7 @@ public class ItemLevelUp : MonoBehaviour
             case 10:
                 pInventory.itemLevels[10] += 1;
 
-                PlayerStats.cooldownMultiplier -= 0.05f;
+                PlayerStats.cooldownMultiplier -= 0.07f;
 
                 break;
 
@@ -276,18 +276,18 @@ public class ItemLevelUp : MonoBehaviour
 
                         WeaponStats.breadSpeedMultiplier = 0.95f;
 
-                        WeaponStats.geeseSize = 1.1f;
+                        WeaponStats.duckSize = 1.1f;
 
                         break;
 
                     case 2:
                         pInventory.itemLevels[5] += 1;
 
-                        WeaponStats.maxGeese = 2;
+                        WeaponStats.maxDucks = 2;
 
                         WeaponStats.breadSpeedMultiplier = 0.9f;
 
-                        WeaponStats.geeseSize = 1.2f;
+                        WeaponStats.duckSize = 1.2f;
 
                         break;
 
@@ -298,18 +298,18 @@ public class ItemLevelUp : MonoBehaviour
 
                         WeaponStats.breadSpeedMultiplier = 0.85f;
 
-                        WeaponStats.geeseSize = 1.3f;
+                        WeaponStats.duckSize = 1.3f;
 
                         break;
 
                     case 4:
                         pInventory.itemLevels[5] += 1;
 
-                        WeaponStats.maxGeese = 4;
+                        WeaponStats.maxDucks = 4;
 
                         WeaponStats.breadSpeedMultiplier = 0.75f;
 
-                        WeaponStats.geeseSize = 1.5f;
+                        WeaponStats.duckSize = 1.5f;
 
                         break;
                 }

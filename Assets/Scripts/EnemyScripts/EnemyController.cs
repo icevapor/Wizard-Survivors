@@ -12,7 +12,7 @@ public class EnemyController : MonoBehaviour, IDamageable
     private SpawnManager spawnManager;
     private Rigidbody2D rb;
     private GameObject player;
-
+    private Collider2D targetingCollider;
     public float health;
     public float speed;
     [SerializeField] private float attackDamage;
@@ -22,7 +22,7 @@ public class EnemyController : MonoBehaviour, IDamageable
 
     private GameObject currentEnemyTarget;
     private EnemyController currentEnemyController;
-    [SerializeField] private LayerMask layerMask;
+    [SerializeField] private ContactFilter2D contactFilter;
     public bool isPoisoned;
 
     void Start()
@@ -31,6 +31,7 @@ public class EnemyController : MonoBehaviour, IDamageable
         spriteRenderer = GetComponent<SpriteRenderer>();
         normalSprite = spriteRenderer.sprite;
         player = GameObject.Find("Wizard");
+        targetingCollider = GameObject.Find("AutoTargetingCollider").GetComponent<Collider2D>();
         spawnManager = GameObject.Find("SpawnManager").GetComponent<SpawnManager>();
 
         //Randomize stats
@@ -45,7 +46,7 @@ public class EnemyController : MonoBehaviour, IDamageable
         //If poisoned, the target is the nearest enemy.
         if (isPoisoned && !attackCooldown)
         {
-            TargetNearestEnemy();
+            TargetClosestEnemy();
         }
 
         //If not poisoned, the target is the player.
@@ -97,7 +98,7 @@ public class EnemyController : MonoBehaviour, IDamageable
         distanceToTarget = new Vector2(player.transform.position.x - transform.position.x, player.transform.position.y - transform.position.y);
         rb.velocity = distanceToTarget.normalized * speed;
     }
-
+    /*
     private void TargetNearestEnemy()
     {
         if (currentEnemyTarget == null)
@@ -135,6 +136,46 @@ public class EnemyController : MonoBehaviour, IDamageable
         else
         {
             distanceToTarget = new Vector2(currentEnemyTarget.transform.position.x - transform.position.x, currentEnemyTarget.transform.position.y - transform.position.y);
+            rb.velocity = distanceToTarget.normalized * speed;
+        }
+    }*/
+
+    private void TargetClosestEnemy()
+    {
+        if (currentEnemyTarget == null)
+        {
+            Collider2D[] results = new Collider2D[32];
+            int nearbyEnemies = Physics2D.OverlapCollider(targetingCollider, contactFilter, results);
+
+            if (nearbyEnemies != 0)
+            {
+                int colliderIndex = 0;
+                float closestDistance = 100.0f;
+
+                for (int i = 0; i < nearbyEnemies; i++)
+                {
+                    float distance = (results[i].transform.position - transform.position).magnitude;
+
+                    if (distance < closestDistance)
+                    {
+                        closestDistance = distance;
+                        colliderIndex = i;
+                    }
+                }
+
+                currentEnemyTarget = results[colliderIndex].gameObject;
+            }
+
+            else
+            {
+                rb.velocity *= 0f;
+            }
+        }
+
+        else
+        {
+            distanceToTarget = new Vector2(currentEnemyTarget.transform.position.x - transform.position.x, currentEnemyTarget.transform.position.y - transform.position.y);
+
             rb.velocity = distanceToTarget.normalized * speed;
         }
     }

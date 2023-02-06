@@ -125,5 +125,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   expValue: 5
-  pullInDistance: 0.75
+  defaultPullInDistance: 0.5
   pullInSpeed: 1.5

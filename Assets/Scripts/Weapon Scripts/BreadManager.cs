@@ -4,22 +4,22 @@ using UnityEngine;
 
 public class BreadManager : MonoBehaviour
 {
-    [SerializeField] private GameObject goosePrefab;
-    private int currentGeese;
+    [SerializeField] private GameObject duckPrefab;
+    private int currentDucks;
 
     void Awake()
     {
-        StartCoroutine(SpawnGeese());
+        StartCoroutine(SpawnDucks());
     }
 
-    private IEnumerator SpawnGeese()
+    private IEnumerator SpawnDucks()
     {
         while (GameManager.gameActive)
         {
-            if (currentGeese < WeaponStats.maxGeese)
+            if (currentDucks < WeaponStats.maxDucks)
             {
-                Instantiate(goosePrefab, transform.position, Quaternion.identity);
-                currentGeese++;
+                Instantiate(duckPrefab, transform.position, Quaternion.identity);
+                currentDucks++;
             }
             yield return new WaitForSeconds(0.5f);
         }

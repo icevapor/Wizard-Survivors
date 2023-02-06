@@ -5,8 +5,9 @@ using UnityEngine;
 public class ExperiencePickupScript : MonoBehaviour
 {
     [SerializeField] private int expValue;
-    [SerializeField] private float pullInDistance;
+    [SerializeField] private float defaultPullInDistance;
     [SerializeField] private float pullInSpeed;
+    private float pullInDistance;
     private Transform player;
     private Vector3 distanceToPlayer;
 
@@ -17,6 +18,8 @@ public class ExperiencePickupScript : MonoBehaviour
 
     void LateUpdate()
     {
+        pullInDistance = defaultPullInDistance * (1 + (PlayerStats.level / 10));
+
         distanceToPlayer = player.position - transform.position;
 
         if (distanceToPlayer.magnitude < pullInDistance)

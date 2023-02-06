@@ -23,6 +23,6 @@ public static class WeaponStats
 
     public static float breadDamage = 5.0f;
     public static float breadSpeedMultiplier = 1.0f;
-    public static float geeseSize = 1.0f;
-    public static int maxGeese = 1;
+    public static float duckSize = 1.0f;
+    public static int maxDucks = 1;
 }

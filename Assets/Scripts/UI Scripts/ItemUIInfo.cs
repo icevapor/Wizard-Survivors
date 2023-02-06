@@ -27,7 +27,7 @@ public static class ItemUIInfo
         "Increases movement speed by 7% per level",
         "Increases weapon damage by 10% per level",
         "Increases HP by 15% per level",
-        "Reduces cooldown of weapons by 5% per level"  
+        "Reduces cooldown of weapons by 7% per level"  
     };
 
     public static string[] weaponEffects = new string[]
@@ -54,9 +54,9 @@ public static class ItemUIInfo
         "The Unstable Potion can be thrown more frequently",
         "The Unstable Potion effect lasts even longer",
         "Obtain Bread",
-        "Feeding geese rye bread makes them stronger",
-        "More bread means more geese",
-        "Slipping protein powder into the bread will create powerful geese",
-        "Too many geese",
+        "Feeding ducks rye bread makes them stronger",
+        "More bread means more ducks",
+        "Slipping protein powder into the bread will create powerful ducks",
+        "Too many ducks",
     };
 }
