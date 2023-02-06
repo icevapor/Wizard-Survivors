@@ -8,12 +8,12 @@ public static class WeaponStats
     public static float bubbleInterval = 2.0f;
     public static int bubbleProjectiles = 1;
 
-    public static float explosionDamage = 10.0f;
+    public static float explosionDamage = 7.5f;
     public static float explosionInterval = 8.0f;
     public static float explosionSize = 1f;
 
     public static float windRingDamage = 3.0f;
-    public static float windRingInterval = 10.0f;
+    public static float windRingInterval = 8.0f;
     public static float windRingSize = 1f;
 
     public static float unstablePotionInterval = 9.0f;

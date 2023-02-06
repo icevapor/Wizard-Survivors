@@ -25,6 +25,13 @@ public class ExplosionScript : MonoBehaviour
     {
         IDamageable damageable = enemy.GetComponent<IDamageable>();
 
+        if (enemy.name == "Puppet")
+        {
+            damageable?.Damage(WeaponStats.explosionDamage * PlayerStats.damageMultiplier * 2);
+
+            return;
+        }
+
         damageable?.Damage(WeaponStats.explosionDamage * PlayerStats.damageMultiplier);
     }
 

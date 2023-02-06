@@ -6,19 +6,20 @@ using UnityEngine;
 public class BreadScript : MonoBehaviour
 {
     private Transform player;
+    private Collider2D targetingCollider;
     private Rigidbody2D rb;
     private SpriteRenderer spriteRenderer;
-    [SerializeField] private LayerMask layerMask;
+    [SerializeField] private ContactFilter2D contactFilter;
     private GameObject currentEnemyTarget;
     private Vector2 distanceToTarget;
     [SerializeField] private float speed;
     [SerializeField] private float lungeForce;
-    private bool hasTarget;
     private bool isAttacking;
 
     void Awake()
     {
         player = GameObject.Find("Wizard").GetComponent<Transform>();
+        targetingCollider = GameObject.Find("AutoTargetingCollider").GetComponent<Collider2D>();
         rb = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         speed *= UnityEngine.Random.Range(0.9f, 1.1f);
@@ -35,7 +36,7 @@ public class BreadScript : MonoBehaviour
 
         else if (!isAttacking)
         {
-            TargetNearestEnemy();
+            TargetClosestEnemy();
         }
 
         if (distanceToTarget.x > 0.0f)
@@ -48,7 +49,7 @@ public class BreadScript : MonoBehaviour
             spriteRenderer.flipX = false;
         }
 
-        if (!hasTarget && distanceToTarget.magnitude < 0.1f)
+        if (currentEnemyTarget == null && distanceToTarget.magnitude < 0.1f)
         {
             rb.velocity *= 0;
         }
@@ -56,31 +57,34 @@ public class BreadScript : MonoBehaviour
         transform.localScale = new Vector3(WeaponStats.geeseSize, WeaponStats.geeseSize, WeaponStats.geeseSize);
     }
 
-    //If no living target already exists, find one. If one has already been chosen, move towards it.
-    private void TargetNearestEnemy()
+    private void TargetClosestEnemy()
     {
         if (currentEnemyTarget == null)
         {
-            try
+            Collider2D[] results = new Collider2D[32];
+            int nearbyEnemies = Physics2D.OverlapCollider(targetingCollider, contactFilter, results);
+
+            if (nearbyEnemies != 0)
             {
-                Vector2 circleCenter = new Vector2(player.position.x, player.position.y);
+                int colliderIndex = 0;
+                float closestDistance = 100.0f;
 
-                float radius = 1.5f;
+                for (int i = 0; i < nearbyEnemies; i++)
+                {
+                    float distance = (results[i].transform.position - transform.position).magnitude;
 
-                //Line that may cause exception.
-                Collider2D enemyCollider = Physics2D.OverlapCircle(circleCenter, radius, layerMask);
+                    if (distance < closestDistance)
+                    {
+                        closestDistance = distance;
+                        colliderIndex = i;
+                    }
+                }
 
-                distanceToTarget = new Vector2(enemyCollider.transform.position.x - transform.position.x, enemyCollider.transform.position.y - transform.position.y);
-
-                currentEnemyTarget = enemyCollider.gameObject;
-
-                hasTarget = true;
+                currentEnemyTarget = results[colliderIndex].gameObject;
             }
 
-            catch (NullReferenceException e)
+            else
             {
-                hasTarget = false;
-
                 distanceToTarget = new Vector2(player.position.x - transform.position.x, player.position.y - transform.position.y);
 
                 rb.velocity = (distanceToTarget.normalized / 1.5f) + (distanceToTarget * speed * (1 / WeaponStats.breadSpeedMultiplier));
@@ -92,8 +96,7 @@ public class BreadScript : MonoBehaviour
             distanceToTarget = new Vector2(currentEnemyTarget.transform.position.x - transform.position.x, currentEnemyTarget.transform.position.y - transform.position.y);
 
             rb.velocity = (distanceToTarget.normalized / 1.5f) + (distanceToTarget * speed * (1 / WeaponStats.breadSpeedMultiplier));
-        }
-
+        }     
     }
 
     private IEnumerator AttackEnemy(GameObject enemy)

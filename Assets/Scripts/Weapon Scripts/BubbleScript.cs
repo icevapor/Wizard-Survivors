@@ -7,47 +7,25 @@ public class BubbleScript : MonoBehaviour
 {
     private Rigidbody2D rb;
     private SpriteRenderer spriteRenderer;
+    private Collider2D targetingCollider;
     [SerializeField] private Sprite poppedSprite;
 
     [SerializeField] private float projectileForce;
     [SerializeField] private float projectileLifespan;
 
     private Vector2 distanceToTarget;
-    private Transform player;
 
-    [SerializeField] private LayerMask layerMask;
+    [SerializeField] private ContactFilter2D contactFilter;
 
-    void Awake()
+    void Start()
     {
         StartCoroutine("ProjectileLife");
 
         spriteRenderer = GetComponent<SpriteRenderer>();
         rb = GetComponent<Rigidbody2D>();
-        player = GameObject.Find("Wizard").GetComponent<Transform>();
+        targetingCollider = GameObject.Find("AutoTargetingCollider").GetComponent<Collider2D>();
 
-        //Scans a circular area around the player and targets the first collider found. If no collider is found, a random vector is generated as a target direction.
-        try
-        {
-            Vector2 circleCenter = new Vector2(player.position.x, player.position.y);
-
-            float radius = 5f;
-
-            //Line that may cause exception.
-            Collider2D enemyCollider = Physics2D.OverlapCircle(circleCenter, radius, layerMask);
-
-            distanceToTarget = new Vector2(enemyCollider.transform.position.x - transform.position.x, enemyCollider.transform.position.y - transform.position.y);
-
-            rb.AddForce(distanceToTarget.normalized * projectileForce, ForceMode2D.Impulse);
-        }
-
-        catch(NullReferenceException e) 
-        {
-
-            Vector2 randomVector = new Vector2(player.position.x + UnityEngine.Random.Range(-5f, 5f), player.position.y + UnityEngine.Random.Range(-5f, 5f));
-
-            rb.AddForce(randomVector * projectileForce, ForceMode2D.Impulse);
-        }
-        
+        TargetClosestEnemy();      
     }
 
     void OnTriggerEnter2D(Collider2D collider)
@@ -76,5 +54,39 @@ public class BubbleScript : MonoBehaviour
     {
         yield return new WaitForSeconds(projectileLifespan);
         Destroy(gameObject);
+    }
+
+    private void TargetClosestEnemy()
+    {
+        Collider2D[] results = new Collider2D[32];
+        int nearbyEnemies = Physics2D.OverlapCollider(targetingCollider, contactFilter, results);
+
+        if (nearbyEnemies != 0)
+        {
+            int colliderIndex = 0;
+            float closestDistance = 100.0f;
+
+            for (int i = 0; i < nearbyEnemies; i++)
+            {
+                float distance = (results[i].transform.position - transform.position).magnitude;
+
+                if (distance < closestDistance)
+                {
+                    closestDistance = distance;
+                    colliderIndex = i;
+                }
+            }
+
+            distanceToTarget = new Vector2(results[colliderIndex].transform.position.x - transform.position.x, results[colliderIndex].transform.position.y - transform.position.y);
+
+            rb.AddForce(distanceToTarget.normalized * projectileForce, ForceMode2D.Impulse);
+        }
+
+        else
+        {
+            Vector2 randomVector = new Vector2(transform.position.x + UnityEngine.Random.Range(-1f, 1f), transform.position.y + UnityEngine.Random.Range(-1f, 1f));
+
+            rb.AddForce(randomVector.normalized * projectileForce, ForceMode2D.Impulse);
+        }
     }
 }

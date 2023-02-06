@@ -6,37 +6,36 @@ using UnityEngine;
 public class ExplosionStaffManager : MonoBehaviour
 {
     private Transform player;
+    private Rigidbody2D playerRb;
     [SerializeField] private GameObject explosionPrefab;
     [SerializeField] private GameObject explosionIndicator;
     [SerializeField] private float explosionOffset;
+    private Vector3 lastIndicatorPosition;
     private List<Collider2D> enemyList = new List<Collider2D>();
 
     void Awake()
     {
         StartCoroutine(ExplosionSpawn());
         player = GameObject.Find("Wizard").transform;
+        playerRb = GameObject.Find("Wizard").GetComponent<Rigidbody2D>();
     }
 
     void Update()
     {
-        if (Input.GetKey(KeyCode.W))
+        if (playerRb.velocity.magnitude > 0.0f)
         {
-            explosionIndicator.transform.position = new Vector3(player.position.x, player.position.y - explosionOffset);
+            lastIndicatorPosition = -playerRb.velocity.normalized * explosionOffset;
+            explosionIndicator.transform.localPosition = lastIndicatorPosition;
+        }
+        
+        else if (lastIndicatorPosition.magnitude != 0f)
+        {
+            explosionIndicator.transform.localPosition = lastIndicatorPosition;
         }
 
-        if (Input.GetKey(KeyCode.S))
+        else
         {
-            explosionIndicator.transform.position = new Vector3(player.position.x, player.position.y + explosionOffset);
-        }
-
-        if (Input.GetKey(KeyCode.A))
-        {
-            explosionIndicator.transform.position = new Vector3(player.position.x + explosionOffset, player.position.y);
-        }
-
-        if (Input.GetKey(KeyCode.D))
-        {
-            explosionIndicator.transform.position = new Vector3(player.position.x - explosionOffset, player.position.y);
+            explosionIndicator.transform.localPosition = new Vector3(-0.75f, 0.0f);
         }
     }
 

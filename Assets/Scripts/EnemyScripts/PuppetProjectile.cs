@@ -33,9 +33,9 @@ public class PuppetProjectile : MonoBehaviour
         transform.localScale *= (1f + (0.25f * Time.deltaTime));
     }
 
-    void OnTriggerEnter2D(Collider2D collider)
+    void OnCollisionEnter2D(Collision2D collision)
     {
-        IDamageable damageable = collider.gameObject.GetComponent<IDamageable>();
+        IDamageable damageable = collision.gameObject.GetComponent<IDamageable>();
 
         damageable?.Damage(projectileDamage);
 

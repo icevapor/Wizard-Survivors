@@ -13,6 +13,29 @@ public class WeaponSelectManager : MonoBehaviour
     {
         Time.timeScale = 0.0f;
         pInventory = GameObject.Find("Wizard").GetComponent<PlayerInventory>();
+
+        //This is to make sure that the WeaponStats static class gets reset every time a new run is started. Probably not the best practice but fuck it it works.
+        WeaponStats.bubbleDamage = 5.0f;
+        WeaponStats.bubbleInterval = 2.0f;
+        WeaponStats.bubbleProjectiles = 1;
+
+        WeaponStats.explosionDamage = 10.0f;
+        WeaponStats.explosionInterval = 8.0f;
+        WeaponStats.explosionSize = 1f;
+
+        WeaponStats.windRingDamage = 3.0f;
+        WeaponStats.windRingInterval = 10.0f;
+        WeaponStats.windRingSize = 1f;
+
+        WeaponStats.unstablePotionInterval = 9.0f;
+        WeaponStats.unstablePotionEffectDuration = 7.0f;
+        WeaponStats.unstablePotionBonusDamage = 2.5f;
+        WeaponStats.unstablePotionBossDamage = 5.0f;
+
+        WeaponStats.breadDamage = 5.0f;
+        WeaponStats.breadSpeedMultiplier = 1.0f;
+        WeaponStats.geeseSize = 1.0f;
+        WeaponStats.maxGeese = 1;
     }
 
     public void SelectBubbleWand()

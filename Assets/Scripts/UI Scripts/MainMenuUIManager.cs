@@ -12,7 +12,7 @@ public class MainMenuUIManager : MonoBehaviour
 
     public void StartGame()
     {
-        PlayerStats.level = 1;
+        PlayerStats.level = 0;
         PlayerStats.maxLevel = 30;
         PlayerStats.experiencePoints = 0;
         PlayerStats.expToNextLevel = 10;
@@ -20,15 +20,15 @@ public class MainMenuUIManager : MonoBehaviour
         PlayerStats.health = 50;
         PlayerStats.maxHealth = 50;
         PlayerStats.healthMultiplier = 1.0f;
-        PlayerStats.healthRegen = 0.005f;
+        PlayerStats.healthRegen = 0.0025f;
 
         PlayerStats.damageMultiplier = 1.0f;
         PlayerStats.cooldownMultiplier = 1.0f;
         PlayerStats.movementSpeedMultiplier = 1.0f;
 
-        PlayerStats.currentWeapons = 1;
+        PlayerStats.currentWeapons = 0;
         PlayerStats.maxWeapons = 3;
-        PlayerStats.ownedWeapons = new int[] { 0, 0, 0 };
+        PlayerStats.ownedWeapons = new int[3];
         PlayerStats.currentPassives = 0;
         PlayerStats.maxPassives = 3;
         PlayerStats.ownedPassives = new int[3];

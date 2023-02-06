@@ -6,31 +6,75 @@ public class UnstablePotionProjectileScript : MonoBehaviour
 {
     [SerializeField] private GameObject unstablePotionPool;
     private Rigidbody2D rb;
+    private Collider2D bottleCollider;
+    private Collider2D targetingCollider;
     private Transform player;
     [SerializeField] private float throwForce;
-    private float yGoalPost;
+    [SerializeField] private ContactFilter2D contactFilter;
+    private Vector2 distanceToTarget;
 
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         player = GameObject.Find("Wizard").GetComponent<Transform>();
-        yGoalPost = player.position.y + Random.Range(-1.0f, 0.0f);
-        ThrowBottle();
+        bottleCollider = GetComponent<Collider2D>();
+        targetingCollider = GameObject.Find("AutoTargetingCollider").GetComponent<Collider2D>();
+        TargetClosestEnemy();
+        StartCoroutine(ProjectileLife());
     }
 
-    void Update()
+    void OnTriggerEnter2D()
     {
-        if (transform.position.y <= yGoalPost)
+        bottleCollider.enabled = false;
+
+        unstablePotionPool.SetActive(true);
+
+        rb.velocity *= 0.0f;
+    }
+
+    //Autotargeting method
+    private void TargetClosestEnemy()
+    {
+        Collider2D[] results = new Collider2D[32];
+        int nearbyEnemies = Physics2D.OverlapCollider(targetingCollider, contactFilter, results);
+
+        if (nearbyEnemies != 0)
         {
-            rb.Sleep();
-            unstablePotionPool.SetActive(true);
+            int colliderIndex = 0;
+            float closestDistance = 100.0f;
+
+            for (int i = 0; i < nearbyEnemies; i++)
+            {
+                float distance = (results[i].transform.position - transform.position).magnitude;
+
+                if (distance < closestDistance)
+                {
+                    closestDistance = distance;
+                    colliderIndex = i;
+                }
+            }
+
+            distanceToTarget = new Vector2(results[colliderIndex].transform.position.x - transform.position.x, results[colliderIndex].transform.position.y - transform.position.y);
+
+            rb.AddForce(distanceToTarget.normalized * throwForce, ForceMode2D.Impulse);
+        }
+
+        else
+        {
+            Vector2 randomVector = new Vector2(transform.position.x + UnityEngine.Random.Range(-1f, 1f), transform.position.y + UnityEngine.Random.Range(-1f, 1f));
+
+            rb.AddForce(randomVector.normalized * throwForce, ForceMode2D.Impulse);
         }
     }
 
-    //Generates random vector used for throwing the potion up at an angle. Then adds an impulse force to the bottle with that vector as a direction.
-    private void ThrowBottle()
+    private IEnumerator ProjectileLife()
     {
-        Vector2 randomVector = new Vector2(Random.Range(-1.0f, 1.0f), Random.Range(0.0f, 1.0f));
-        rb.AddForce(randomVector.normalized * throwForce, ForceMode2D.Impulse);
+        yield return new WaitForSeconds(1.0f);
+
+        bottleCollider.enabled = false;
+
+        unstablePotionPool.SetActive(true);
+
+        rb.velocity *= 0.0f;
     }
 }

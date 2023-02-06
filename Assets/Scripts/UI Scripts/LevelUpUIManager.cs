@@ -34,7 +34,7 @@ public class LevelUpUIManager : MonoBehaviour
         {
             LevelUp();
             PlayerStats.experiencePoints = 0;
-            PlayerStats.expToNextLevel += 6;
+            PlayerStats.expToNextLevel += 10;
         }
     }
 

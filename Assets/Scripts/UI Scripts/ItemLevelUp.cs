@@ -21,7 +21,7 @@ public class ItemLevelUp : MonoBehaviour
             case 6:
                 pInventory.itemLevels[6] += 1;
 
-                PlayerStats.healthRegen += 0.005f;
+                PlayerStats.healthRegen += 0.0025f;
 
                 break;
 
@@ -44,7 +44,7 @@ public class ItemLevelUp : MonoBehaviour
 
                 PlayerStats.healthMultiplier += 0.15f;
 
-                PlayerStats.maxHealth = 100f * PlayerStats.healthMultiplier;
+                PlayerStats.maxHealth = PlayerStats.defaultHealth * PlayerStats.healthMultiplier;
 
                 break;
 

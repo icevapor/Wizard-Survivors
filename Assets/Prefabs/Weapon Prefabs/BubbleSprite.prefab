@@ -128,9 +128,20 @@ MonoBehaviour:
   poppedSprite: {fileID: 21300000, guid: a38975f268cb3cc488bbba8b307ccff2, type: 3}
   projectileForce: 5
   projectileLifespan: 5
-  layerMask:
-    serializedVersion: 2
-    m_Bits: 2112
+  contactFilter:
+    useTriggers: 0
+    useLayerMask: 1
+    useDepth: 0
+    useOutsideDepth: 0
+    useNormalAngle: 0
+    useOutsideNormalAngle: 0
+    layerMask:
+      serializedVersion: 2
+      m_Bits: 2112
+    minDepth: 0
+    maxDepth: 0
+    minNormalAngle: 0
+    maxNormalAngle: 0
 --- !u!50 &8965766523986341870
 Rigidbody2D:
   serializedVersion: 4

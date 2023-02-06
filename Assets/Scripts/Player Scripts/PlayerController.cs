@@ -62,11 +62,6 @@ public class PlayerController : MonoBehaviour, IDamageable
         }
 
         Debug.Log(PlayerStats.health);
-
-        if (PlayerStats.health < 0)
-        {
-            //Die here
-        } 
     }
 
     private IEnumerator Damaged()

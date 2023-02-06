@@ -11,8 +11,9 @@ public static class PlayerStats
 
     public static float health = 50;
     public static float maxHealth = 50;
+    public static float defaultHealth = 50;
     public static float healthMultiplier = 1.0f;
-    public static float healthRegen = 0.005f;
+    public static float healthRegen = 0.0025f;
 
     public static float damageMultiplier = 1.0f;
     public static float cooldownMultiplier = 1.0f;

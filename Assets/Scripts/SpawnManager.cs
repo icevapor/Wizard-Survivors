@@ -137,21 +137,7 @@ public class SpawnManager : MonoBehaviour
     {
         yield return new WaitForSeconds(45.0f);
 
-        maxEnemies = 10;
-
-        yield return new WaitForSeconds(45.0f);
-
-        maxEnemies = 11;
-
-        yield return new WaitForSeconds(45.0f);
-
         maxEnemies = 12;
-
-        maxEnemyIndex = 1;
-
-        yield return new WaitForSeconds(45.0f);
-
-        maxEnemies = 13;
 
         yield return new WaitForSeconds(45.0f);
 
@@ -159,13 +145,27 @@ public class SpawnManager : MonoBehaviour
 
         yield return new WaitForSeconds(45.0f);
 
-        maxEnemies = 15;
+        maxEnemies = 16;
+
+        maxEnemyIndex = 1;
+
+        yield return new WaitForSeconds(45.0f);
+
+        maxEnemies = 18;
+
+        yield return new WaitForSeconds(45.0f);
+
+        maxEnemies = 20;
+
+        yield return new WaitForSeconds(45.0f);
+
+        maxEnemies = 22;
 
         minEnemyIndex = 1;
 
         yield return new WaitForSeconds(45.0f);
 
-        maxEnemies = 16;
+        maxEnemies = 24;
 
         maxEnemyIndex = 2;
 

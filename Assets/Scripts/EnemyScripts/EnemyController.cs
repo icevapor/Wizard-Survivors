@@ -34,9 +34,10 @@ public class EnemyController : MonoBehaviour, IDamageable
         spawnManager = GameObject.Find("SpawnManager").GetComponent<SpawnManager>();
 
         //Randomize stats
-        speed *= UnityEngine.Random.Range(0.8f, 1.2f);
-        health *= UnityEngine.Random.Range(0.8f, 1.2f);
-        transform.localScale *= UnityEngine.Random.Range(0.8f, 1.2f);
+        float scaler = UnityEngine.Random.Range(0.8f, 1.2f);
+        speed *= scaler;
+        health *= scaler;
+        transform.localScale *= scaler;
     }
 
     void Update()
@@ -70,6 +71,11 @@ public class EnemyController : MonoBehaviour, IDamageable
         {
             StartCoroutine(DealDamageToEnemy(collision.gameObject));
         }
+
+        if (!attackCooldown && !isPoisoned && collision.gameObject.layer == 3)
+        {
+            StartCoroutine(DealDamageToPlayer(collision.gameObject));
+        }
     }
 
     void OnCollisionStay2D(Collision2D collision)
@@ -78,13 +84,10 @@ public class EnemyController : MonoBehaviour, IDamageable
         {
             StartCoroutine(DealDamageToEnemy(collision.gameObject));
         }
-    }
 
-    void OnTriggerStay2D(Collider2D collider)
-    {
-        if (!attackCooldown && !isPoisoned)
+        if (!attackCooldown && !isPoisoned && collision.gameObject.layer == 3)
         {
-            StartCoroutine(DealDamageToPlayer(collider.gameObject));
+            StartCoroutine(DealDamageToPlayer(collision.gameObject));
         }
     }
 
