@@ -188,7 +188,7 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -209,7 +209,7 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -222,7 +222,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: EyeOfNewtSprite
+      name: BraceletOfRevolutionSprite
       rect:
         serializedVersion: 2
         x: 32
@@ -230,7 +230,7 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -243,7 +243,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FairyHeelysSprite
+      name: EyeOfNewtSprite
       rect:
         serializedVersion: 2
         x: 64
@@ -251,7 +251,7 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -264,7 +264,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: OlderWandSprite
+      name: FairyHeelysSprite
       rect:
         serializedVersion: 2
         x: 96
@@ -272,7 +272,7 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -285,7 +285,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PhilosophersStoneSprite
+      name: OlderWandSprite
       rect:
         serializedVersion: 2
         x: 0
@@ -293,7 +293,7 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -306,10 +306,31 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
+      name: PhilosophersStoneSprite
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 11f0d809f1b7f00439d22cb416f99add
+      internalID: -1843313708
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
       name: WizardsToolbeltSprite
       rect:
         serializedVersion: 2
-        x: 33
+        x: 65
         y: 32
         width: 32
         height: 32
@@ -320,8 +341,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 11f0d809f1b7f00439d22cb416f99add
-      internalID: -1843313708
+      spriteID: a57ea78ed9db9ed4fa60eec1575333a9
+      internalID: -2115516279
       vertices: []
       indices: 
       edges: []
@@ -339,12 +360,13 @@ TextureImporter:
     nameFileIdTable:
       UnstablePotionSprite: -998365965
       WindRingSprite: 2128575988
-      FairyHeelysSprite: 928826622
-      WizardsToolbeltSprite: -1843313708
+      BraceletOfRevolutionSprite: -700153101
+      FairyHeelysSprite: -1921643465
+      WizardsToolbeltSprite: -2115516279
       ExplosionStaffSprite: 1232832907
-      PhilosophersStoneSprite: -1562327157
-      OlderWandSprite: -1921643465
-      EyeOfNewtSprite: -700153101
+      PhilosophersStoneSprite: -1843313708
+      OlderWandSprite: -1562327157
+      EyeOfNewtSprite: 928826622
       BreadSprite: 1129910661
       BubbleWandSprite: 479288666
   spritePackingTag: 

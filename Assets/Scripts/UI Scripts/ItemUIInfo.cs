@@ -13,6 +13,7 @@ public static class ItemUIInfo
         "A true wizard doesn’t let anyone or anything make physical contact with them. This ring was enchanted to make that easier!",
         "Your last batch of mana potions ended up the wrong color. Why not chuck some at your enemies and see what happens?",
         "An essential tool that no self respecting wizard leaves the house without. Used to tame the fowlest of avian demons.",
+        "Unfortunately this accessory tends to attract more celestial bodies than human ones.",
         "Pop these sucks like grapes and you’ll be feeling good as new!",
         "The mystery of fairy mobility revealed at last! I guess they just had heelys.",
         "This legendary wand was crafted using the wood of a tree behind my house that's, like, pretty old.",
@@ -58,5 +59,10 @@ public static class ItemUIInfo
         "More bread means more ducks",
         "Slipping protein powder into the bread will create powerful ducks",
         "Too many ducks",
+        "Obtain the Bracelet of Revolution",
+        "The Bracelet attracts an additional orbital",
+        "The Orbitals deal more damage",
+        "The Orbitals revolve around you more quickly",
+        "The Bracelet attracts two additional orbitals"
     };
 }

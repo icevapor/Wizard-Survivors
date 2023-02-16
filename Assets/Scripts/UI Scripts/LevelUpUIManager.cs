@@ -15,7 +15,7 @@ public class LevelUpUIManager : MonoBehaviour
     [SerializeField] private Image[] itemThumbnailsUI = new Image[3];
     [SerializeField] private TextMeshProUGUI[] itemDescriptionsUI = new TextMeshProUGUI[3];
     [SerializeField] private TextMeshProUGUI[] itemEffectsUI = new TextMeshProUGUI[3];
-    [SerializeField] private Sprite[] itemSprites = new Sprite[11];
+    [SerializeField] private Sprite[] itemSprites = new Sprite[12];
 
     void Start()
     {
@@ -35,6 +35,11 @@ public class LevelUpUIManager : MonoBehaviour
             LevelUp();
             PlayerStats.experiencePoints = 0;
             PlayerStats.expToNextLevel += 10;
+        }
+
+        if (levelUpWindow.activeInHierarchy)
+        {
+            Time.timeScale = 0.0f;
         }
     }
 
@@ -76,9 +81,9 @@ public class LevelUpUIManager : MonoBehaviour
         }
 
         //If the item is a passive item, refer to the array of passive item effects. Passive effects are constant but weapon effects are level dependent.
-        if (itemIndex > 5)
+        if (itemIndex > 6)
         {
-            itemEffectsUI[choiceIndex].text = "Level " + pInventory.itemLevels[itemIndex] + " -> " + (pInventory.itemLevels[itemIndex] + 1) + " : " + ItemUIInfo.passiveEffects[itemIndex - 5];
+            itemEffectsUI[choiceIndex].text = "Level " + pInventory.itemLevels[itemIndex] + " -> " + (pInventory.itemLevels[itemIndex] + 1) + " : " + ItemUIInfo.passiveEffects[itemIndex - 6];
 
             itemButtons[choiceIndex].onClick.AddListener(() => itemLevelUp.LevelUpPassiveItem(itemIndex));
         }
@@ -97,7 +102,7 @@ public class LevelUpUIManager : MonoBehaviour
 
     private int GetRandomItemIndex(int choiceIndex, int attempts = 0)
     {
-        int index = Random.Range(1, 11);
+        int index = Random.Range(1, 12);
 
         if (attempts > 50)
         {
@@ -119,8 +124,8 @@ public class LevelUpUIManager : MonoBehaviour
             return GetRandomItemIndex(choiceIndex, attempts + 1);
         }
 
-        //If the item index is less than 6 (which makes it a weapon index) and the player has the max amount of weapons, try again.
-        if (index < 6 && PlayerStats.currentWeapons == PlayerStats.maxWeapons)
+        //If the item index is less than 7 (which makes it a weapon index) and the player has the max amount of weapons, try again.
+        if (index < 7 && PlayerStats.currentWeapons == PlayerStats.maxWeapons)
         {
             index = PlayerStats.ownedWeapons[Random.Range(0, PlayerStats.maxWeapons)];
 
@@ -142,8 +147,8 @@ public class LevelUpUIManager : MonoBehaviour
             return index;
         }
 
-        //If the item index is 6 or higher (which makes it a passive index) and the player has the max amount of passives, pick a random passive from the list of owned passives.
-        if (index >= 6 && PlayerStats.currentPassives == PlayerStats.maxPassives)
+        //If the item index is 7 or higher (which makes it a passive index) and the player has the max amount of passives, pick a random passive from the list of owned passives.
+        if (index >= 7 && PlayerStats.currentPassives == PlayerStats.maxPassives)
         {
             index = PlayerStats.ownedPassives[Random.Range(0, PlayerStats.maxPassives)];
 

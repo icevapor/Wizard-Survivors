@@ -315,6 +315,48 @@ public class ItemLevelUp : MonoBehaviour
                 }
 
                 break;
+
+            case 6: //Bracelet of Revolution
+                switch (pInventory.itemLevels[6])
+                {
+                    case 0:
+                        pInventory.itemLevels[6] += 1;
+
+                        weapons[5].SetActive(true);
+
+                        break;
+
+                    case 1:
+                        pInventory.itemLevels[6] += 1;
+
+                        WeaponStats.maxOrbitals = 2;
+
+                        break;
+
+                    case 2:
+                        pInventory.itemLevels[6] += 1;
+
+                        WeaponStats.orbitalDamage = 6.0f;
+
+                        break;
+
+                    case 3:
+                        pInventory.itemLevels[6] += 1;
+
+                        WeaponStats.orbitalRevolutionSpeed = 200f;
+
+                        break;
+
+                    case 4:
+                        pInventory.itemLevels[6] += 1;
+
+                        WeaponStats.maxOrbitals = 4;
+
+                        break;
+
+                }
+
+                break;
         }
 
         levelUpManager.levelUpWindow.SetActive(false);

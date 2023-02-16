@@ -11,7 +11,6 @@ public class WeaponSelectManager : MonoBehaviour
 
     void Start()
     {
-        Time.timeScale = 0.0f;
         pInventory = GameObject.Find("Wizard").GetComponent<PlayerInventory>();
 
         //This is to make sure that the WeaponStats static class gets reset every time a new run is started. Probably not the best practice but fuck it it works.
@@ -36,6 +35,18 @@ public class WeaponSelectManager : MonoBehaviour
         WeaponStats.breadSpeedMultiplier = 1.0f;
         WeaponStats.duckSize = 1.0f;
         WeaponStats.maxDucks = 1;
+
+        WeaponStats.orbitalDamage = 3.0f;
+        WeaponStats.orbitalRevolutionSpeed = 120.0f;
+        WeaponStats.maxOrbitals = 1;
+}
+
+    void Update()
+    {
+        if (weaponSelectMenu.activeInHierarchy)
+        {
+            Time.timeScale = 0.0f;
+        }
     }
 
     public void SelectBubbleWand()
@@ -77,6 +88,15 @@ public class WeaponSelectManager : MonoBehaviour
     public void SelectBread()
     {
         itemLevelUp.LevelUpWeapon(5);
+
+        Time.timeScale = 1.0f;
+
+        weaponSelectMenu.SetActive(false);
+    }
+
+    public void SelectBracelet()
+    {
+        itemLevelUp.LevelUpWeapon(6);
 
         Time.timeScale = 1.0f;
 

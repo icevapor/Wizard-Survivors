@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class PlayerInventory : MonoBehaviour
 {
-    public string[] itemNames = new string[11];
-    public bool[] hasItems = new bool[11];
-    public int[] itemLevels = new int[11];
+    public string[] itemNames = new string[12];
+    public bool[] hasItems = new bool[12];
+    public int[] itemLevels = new int[12];
 
     void Start()
     {
-        itemNames = new string[11];
-        hasItems = new bool[11];
-        itemLevels = new int[11];
+        itemNames = new string[12];
+        hasItems = new bool[12];
+        itemLevels = new int[12];
     }
 }

@@ -25,4 +25,8 @@ public static class WeaponStats
     public static float breadSpeedMultiplier = 1.0f;
     public static float duckSize = 1.0f;
     public static int maxDucks = 1;
+
+    public static float orbitalDamage = 3.0f;
+    public static float orbitalRevolutionSpeed = 120.0f;
+    public static int maxOrbitals = 1;
 }
